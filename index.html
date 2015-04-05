@@ -81,11 +81,10 @@
 <p>Download the test scripts</p>
 
 <ul>
-<li>you can either clone the git repository <code>git clone https://github.com/HSU-ANT/beaqlejs.git</code>
+<li>you can either get a stable release from <code>https://github.com/HSU-ANT/beaqlejs/releases</code> </li>
+<li>or clone the git repository <code>git clone https://github.com/HSU-ANT/beaqlejs.git</code>
 </li>
 <li>or simply download a zip of the current HEAD revision at <code>https://github.com/HSU-ANT/beaqlejs/archive/master.zip</code>
-</li>
-<li>or choose an older release at <code>https://github.com/HSU-ANT/beaqlejs/releases</code>
 </li>
 </ul>
 </li>
@@ -192,10 +191,10 @@
 <h2>
 <a id="browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser Support</h2>
 
-<p>BeaqleJS in general will run well in any recent web browsers out in the wild. The only noteworthy exceptions are the Internet Explorer versions below 9 which still have a market share of a few percent and unfortunately miss the required FileAPI. Participants will get a warning if they open the listening test with one of these old versions.</p>
+<p>BeaqleJS in general will run well in any recent web browser out in the wild. The only noteworthy exceptions are the Internet Explorer versions below 9 which still have a market share of a few percent and unfortunately miss the required FileAPI. Participants will get a warning if they open the listening test with one of these old versions.</p>
 
 <h3>
-<a id="html5-features" class="anchor" href="#html5-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>HTML5 Features</h3>
+<a id="required-html5-features" class="anchor" href="#required-html5-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Required HTML5 Features</h3>
 
 <ul>
 <li><p>Audio playback using HTML5 is widely supported by all major browsers since many years (except IE below version 9.0). (<a href="http://caniuse.com/#feat=audio">list browsers</a>)</p></li>
@@ -275,15 +274,15 @@
 <ol>
 <li><p>Upload the file <code>web_service/beaqleJS_Service.php</code> to a webserver. Create a folder named <code>results/</code> next to the PHP script and make sure that the webserver has write permissions on it.</p></li>
 <li><p>Try to execute the script in your browser. For example, point your browser to <code>http://yourdomain.com/mysubfolder/beaqleJS_Service.php</code>. The script performs a self-test and checks PHP version and write permission of the <code>results/</code> folder.</p></li>
-<li><p>Enable online submission in the BeaqleJS config (<code>"EnableOnlineSubmission": false</code>) and set the <code>BeaqleServiceURL</code> to <code>http://yourdomain.com/mysubfolder/beaqleJS_Service.php</code>.</p></li>
+<li><p>Enable online submission in the BeaqleJS config (<code>"EnableOnlineSubmission": true</code>) and set the <code>BeaqleServiceURL</code> to <code>http://yourdomain.com/mysubfolder/beaqleJS_Service.php</code>.</p></li>
 </ol>
 
 <h3>
 <a id="security" class="anchor" href="#security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h3>
 
-<p>As with every public web service it is important to be aware about security aspects. In the current implementation there is no possibility to authenticate submitters, therefore everyone can potentially submit spoofed results if he is able to do some basic reverse engineering!</p>
+<p>As with every public web service it is important to be aware about security aspects. In the current implementation there is no possibility to authenticate submitters, therefore everyone can potentially submit spoofed results if he is able to do some basic reverse engineering! However, this is also a common risk with every other public and open survey platform.</p>
 
-<p>However, there are two provisions to avoid spamming of your sever:</p>
+<p>There are two provisions to avoid spamming of your sever:</p>
 
 <ul>
 <li>The results JSON object is limited to a size of 64kB which is a lot for listening test results, but not enough to abuse your server as a hosting facility</li>
