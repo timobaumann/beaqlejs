@@ -1,39 +1,33 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <title>Beaqlejs by HSU-ANT</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-dark.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
-    <title>Beaqlejs by HSU-ANT</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
+    <div class="wrapper">
+      <header>
         <h1>Beaqlejs</h1>
-        <h2>*BeaqleJS* provides a framework to create browser based listening tests and is purely based on open web standards like HTML5 and Javascript.</h2>
-        <a href="https://github.com/HSU-ANT/beaqlejs" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="beaqlejs" class="anchor" href="#beaqlejs" aria-hidden="true"><span class="octicon octicon-link"></span></a>BeaqleJS</h1>
-
-<h1></h1>
-
-<p>Table of contents</p>
+        <p>*BeaqleJS* provides a framework to create browser based listening tests and is purely based on open web standards like HTML5 and Javascript.</p>
+        <p class="view"><a href="https://github.com/HSU-ANT/beaqlejs">View the Project on GitHub <small>HSU-ANT/beaqlejs</small></a></p>
+        <ul>
+          <li><a href="https://github.com/HSU-ANT/beaqlejs/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/HSU-ANT/beaqlejs/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/HSU-ANT/beaqlejs">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>Table of contents</p>
 
 <ul>
 <li><a href="#description">Description</a></li>
@@ -41,16 +35,15 @@
 <li><a href="#test-configuration">Test Configuration</a></li>
 <li><a href="#browser-support">Browser Support</a></li>
 <li><a href="#online-submission">Online Submission</a></li>
+<li><a href="#internals">Internals</a></li>
 <li><a href="#contact">Contact</a></li>
 <li><a href="#license">License</a></li>
 </ul>
 
-<hr>
+<h1>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h1>
 
-<h2>
-<a id="description" class="anchor" href="#description" aria-hidden="true"><span class="octicon octicon-link"></span></a>Description</h2>
-
-<p>BeaqleJS provides a framework to create browser based listening tests and is purely based on open web standards like HTML5 and Javascript. Therefore, the test runs in any modern web browser and allows an easy distribution of the test environment to a significant amount of participants in combination with simple configuration. Currently it supports ABX and MUSHRA style test procedures but can be easily extended to other test schemes.</p>
+<p>BeaqleJS (<strong>b</strong>rowser based <strong>e</strong>valuation of <strong>a</strong>udio <strong>q</strong>uality and <strong>c</strong>omparative <strong>l</strong>istening <strong>e</strong>nvironment) provides a framework to create browser based listening tests and is purely based on open web standards like HTML5 and Javascript. Therefore, the test runs in any modern web browser and allows an easy distribution of the test environment to a significant amount of participants in combination with simple configuration. Currently it supports ABX and MUSHRA style test procedures but can be easily extended to other test schemes.</p>
 
 <p>To get a better impression about its functionality there are two demo test sites for the ABX and MUSHRA test classes:</p>
 
@@ -59,142 +52,145 @@
 <li><a href="http://hsu-ant.github.io/beaqlejs/demo/mushra/">http://hsu-ant.github.io/beaqlejs/demo/mushra/</a></li>
 </ul>
 
-<p>BeaqleJS has been presented at the <a href="http://lac.linuxaudio.org/2014/">Linux Audio Conference 2014</a> at the ZKM in Karlsruhe, Germany. The <a href="http://lac.linuxaudio.org/2014/papers/26.pdf">paper</a> and presentation <a href="http://lac.linuxaudio.org/2014/download/SKraft_BeaqleJS.pdf">slides</a> are available from the conference archive.</p>
+<p>BeaqleJS has been presented at the <a href="http://lac.linuxaudio.org/2014/">Linux Audio Conference 2014</a> at the ZKM in Karlsruhe, Germany. The original <a href="http://lac.linuxaudio.org/2014/papers/26.pdf">paper</a> and presentation <a href="http://lac.linuxaudio.org/2014/download/SKraft_BeaqleJS.pdf">slides</a> are available from the conference archive. However, meanwhile most of the paper content has been updated and merged into this documentation.</p>
 
 <p>If you want to cite BeaqleJS in a publication please use</p>
 
-<pre><code>S. Kraft, U. Zölzer: "BeaqleJS: HTML5 and JavaScript based Framework for the Subjective Evaluation of Audio Quality", Linux Audio Conference, 2014, Karlsruhe, Germany
-</code></pre>
+<blockquote>
+<p>S. Kraft, U. Zölzer: "BeaqleJS: HTML5 and JavaScript based Framework for the Subjective Evaluation of Audio Quality", <em>Linux Audio Conference</em>, 2014, Karlsruhe, Germany</p>
+</blockquote>
 
 <p>as a reference or link to our GitHub repository</p>
 
-<pre><code>https://github.com/HSU-ANT/beaqlejs
-</code></pre>
+<blockquote>
+<p><a href="https://github.com/HSU-ANT/beaqlejs">https://github.com/HSU-ANT/beaqlejs</a></p>
+</blockquote>
 
-<hr>
-
-<h2>
-<a id="basic-setup" class="anchor" href="#basic-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Setup</h2>
+<h1>
+<a id="basic-setup" class="anchor" href="#basic-setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Setup</h1>
 
 <ol>
 <li>
 <p>Download the test scripts</p>
 
 <ul>
-<li>you can either get a stable release from <code>https://github.com/HSU-ANT/beaqlejs/releases</code> </li>
-<li>or clone the git repository <code>git clone https://github.com/HSU-ANT/beaqlejs.git</code>
+<li>you can either get a stable release from<br>
+<a href="https://github.com/HSU-ANT/beaqlejs/releases">https://github.com/HSU-ANT/beaqlejs/releases</a>
 </li>
-<li>or simply download a zip of the current HEAD revision at <code>https://github.com/HSU-ANT/beaqlejs/archive/master.zip</code>
+<li>or clone the git repository<br>
+<code>git clone https://github.com/HSU-ANT/beaqlejs.git</code>
+</li>
+<li>or simply download a zip of the current HEAD revision at<br>
+<a href="https://github.com/HSU-ANT/beaqlejs/archive/master.zip">https://github.com/HSU-ANT/beaqlejs/archive/master.zip</a>
 </li>
 </ul>
 </li>
 <li>
 <p>Uncomment the line where the desired test class is initialized and loaded in the header of the <code>index.html</code> file.</p>
 
-<pre><code>&lt;script type="text/javascript"&gt;
-    var testHandle;
-    window.onload=function() {
-        // Uncomment one of the following lines to choose the desired test class
-        //testHandle = new MushraTest(TestConfig);  // &lt;= MUSHRA test class
-        //testHandle = new AbxTest(TestConfig);     // &lt;= ABX test class
-    };
-&lt;/script&gt;
-</code></pre>
+<div class="highlight highlight-html"><pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">  <span class="pl-k">var</span> testHandle;</span>
+<span class="pl-s1">  <span class="pl-c1">window</span>.<span class="pl-en">onload</span><span class="pl-k">=</span><span class="pl-k">function</span>() {</span>
+<span class="pl-s1">    <span class="pl-c">// Uncomment one of the following lines to choose the desired test class</span></span>
+<span class="pl-s1">    <span class="pl-c">//testHandle = new MushraTest(TestConfig);  // &lt;= MUSHRA test class</span></span>
+<span class="pl-s1">    <span class="pl-c">//testHandle = new AbxTest(TestConfig);     // &lt;= ABX test class</span></span>
+<span class="pl-s1">  };</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
 </li>
 <li>
 <p>Prepare a config file and set its path in the prepared <code>&lt;script&gt;&lt;/script&gt;</code> tag in the header of the <code>index.html</code> file.</p>
 
-<pre><code>&lt;!-- load the test config file --&gt;
-    &lt;script src="config/YOUR_CONFIG.js" type="text/javascript"&gt;&lt;/script&gt;
-&lt;!----&gt;
-</code></pre>
+<div class="highlight highlight-html"><pre><span class="pl-c">&lt;!-- load the test config file --&gt;</span>
+<span class="pl-s1">  &lt;<span class="pl-ent">script</span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>config/YOUR_CONFIG.js<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span>&gt;&lt;/<span class="pl-ent">script</span>&gt;</span>
+<span class="pl-c">&lt;!----&gt;</span></pre></div>
 
 <p>Two example config files for the MUSHRA and ABX test class are already supplied in the <code>config/</code> folder to serve as a starting point. Detailed information about the different test classes and configuration can be found below.</p>
 </li>
 </ol>
 
-<hr>
+<h1>
+<a id="test-configuration" class="anchor" href="#test-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test Configuration</h1>
 
 <h2>
-<a id="test-configuration" class="anchor" href="#test-configuration" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test Configuration</h2>
-
-<h3>
-<a id="general-options" class="anchor" href="#general-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>General Options</h3>
+<a id="general-options" class="anchor" href="#general-options" aria-hidden="true"><span class="octicon octicon-link"></span></a>General Options</h2>
 
 <p>The available options can be dividided into a set of general options whitch apply to all test classes and other options, including file declarations, that are specific for a single test class.</p>
 
-<pre><code>var TestConfig = {
-    "TestName": "My Listening Test",     // &lt;=  Name of the test
-    "LoopByDefault": true,               // &lt;=  Enable looped playback by default
-    "ShowFileIDs": false,                // &lt;=  Show file IDs for debugging (never enable this during real test!)
-    "ShowResults": false,                // &lt;=  Show table with test results at the end
-    "EnableABLoop": true,                // &lt;=  Show controls to loop playback with an AB range slider
-    "EnableOnlineSubmission": false,     // &lt;=  Enable transmission of JSON encoded results to a web service
-    "BeaqleServiceURL": "",              // &lt;=  URL of the web service
-    "SupervisorContact": "",             // &lt;=  Email address of supervisor to contact for help or for submission of results by email
-    "RandomizeTestOrder": true,          // &lt;=  Present test sets in a random order
-    "MaxTestsPerRun": -1,                // &lt;=  Only run a random subset of all available tests, set to -1 to disable
-    "Testsets": [ {...}, {...}, ... ],   // &lt;=  Definition of test sets and files, more details below
-}
-</code></pre>
+<div class="highlight highlight-javascript"><pre><span class="pl-k">var</span> TestConfig <span class="pl-k">=</span> {
+  <span class="pl-s"><span class="pl-pds">"</span>TestName<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>My Listening Test<span class="pl-pds">"</span></span>,   <span class="pl-c">// &lt;=  Name of the test</span>
+  <span class="pl-s"><span class="pl-pds">"</span>LoopByDefault<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,             <span class="pl-c">// &lt;=  Enable looped playback by default</span>
+  <span class="pl-s"><span class="pl-pds">"</span>ShowFileIDs<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,              <span class="pl-c">// &lt;=  Show file IDs for debugging (never </span>
+                                     <span class="pl-c">//     enable this during real test!)</span>
+  <span class="pl-s"><span class="pl-pds">"</span>ShowResults<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,              <span class="pl-c">// &lt;=  Show table with test results at the end</span>
+  <span class="pl-s"><span class="pl-pds">"</span>EnableABLoop<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,              <span class="pl-c">// &lt;=  Show controls to loop playback with an </span>
+                                     <span class="pl-c">//     AB range slider</span>
+  <span class="pl-s"><span class="pl-pds">"</span>EnableOnlineSubmission<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,   <span class="pl-c">// &lt;=  Enable transmission of JSON encoded </span>
+                                     <span class="pl-c">//     results to a web service</span>
+  <span class="pl-s"><span class="pl-pds">"</span>BeaqleServiceURL<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,            <span class="pl-c">// &lt;=  URL of the web service</span>
+  <span class="pl-s"><span class="pl-pds">"</span>SupervisorContact<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-pds">"</span></span>,           <span class="pl-c">// &lt;=  Email address of supervisor to contact for </span>
+                                     <span class="pl-c">//     help or for submission of results by email</span>
+  <span class="pl-s"><span class="pl-pds">"</span>RandomizeTestOrder<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,        <span class="pl-c">// &lt;=  Present test sets in a random order</span>
+  <span class="pl-s"><span class="pl-pds">"</span>MaxTestsPerRun<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">1</span>,              <span class="pl-c">// &lt;=  Only run a random subset of all available </span>
+                                     <span class="pl-c">//     tests, set to -1 to disable</span>
+  <span class="pl-s"><span class="pl-pds">"</span>Testsets<span class="pl-pds">"</span></span><span class="pl-k">:</span> [ {...}, {...}, ... ], <span class="pl-c">// &lt;=  Definition of test sets and files, more </span>
+                                     <span class="pl-c">//     details below</span>
+}</pre></div>
 
-<h3>
-<a id="abx" class="anchor" href="#abx" aria-hidden="true"><span class="octicon octicon-link"></span></a>ABX</h3>
+<h2>
+<a id="abx" class="anchor" href="#abx" aria-hidden="true"><span class="octicon octicon-link"></span></a>ABX</h2>
 
 <p>In an ABX test three items named A, B and X are presented to the listener, whereas X is randomly selected to be either the same as A or B. The listener has to identify which item is hidden behind X, or which one (A or B) is closest to X. If the listener is able to find the correct item, it reveals that there are perceptual differences between A and B. </p>
 
 <p>A typical application of ABX tests would be the evaluation of the transparency of audio codecs. For example item A could be an unencoded audio snippet and B is the same snippet but encoded with a lossy codec. When the listener is not able to identify if A or B was hidden in X (results are randomly distributed), one can assume that the audio coding was transparent</p>
 
-<pre><code>...                                      // &lt;=  General options
-"Testsets": [
-    { "Name": "Schubert",                // &lt;=  Name of the test set
-      "TestID": "id1_1",                 // &lt;=  Unique test set ID, necessary for internal
-      "Files": {                         // &lt;=  Array with test files
-        "A": "audio/schubert_ref.wav",   // &lt;=  File A
-        "B": "audio/schubert_2.wav",     // &lt;=  File B
-        }
-    },
-    { ... },                             // &lt;=  Next test set starts here
-    ....
-]
-</code></pre>
+<div class="highlight highlight-javascript"><pre>...                                  <span class="pl-c">// &lt;=  General options</span>
+<span class="pl-s"><span class="pl-pds">"</span>Testsets<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+  { <span class="pl-s"><span class="pl-pds">"</span>Name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Schubert<span class="pl-pds">"</span></span>,              <span class="pl-c">// &lt;=  Name of the test set</span>
+    <span class="pl-s"><span class="pl-pds">"</span>TestID<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>id1_1<span class="pl-pds">"</span></span>,               <span class="pl-c">// &lt;=  Unique test set ID, necessary for internal</span>
+    <span class="pl-s"><span class="pl-pds">"</span>Files<span class="pl-pds">"</span></span><span class="pl-k">:</span> {                       <span class="pl-c">// &lt;=  Array with test files</span>
+      <span class="pl-s"><span class="pl-pds">"</span>A<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/schubert_ref.wav<span class="pl-pds">"</span></span>, <span class="pl-c">// &lt;=  File A</span>
+      <span class="pl-s"><span class="pl-pds">"</span>B<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/schubert_2.wav<span class="pl-pds">"</span></span>,   <span class="pl-c">// &lt;=  File B</span>
+      }
+  },
+  { ... },                           <span class="pl-c">// &lt;=  Next test set starts here</span>
+  ....
+]</pre></div>
 
-<h3>
-<a id="mushra" class="anchor" href="#mushra" aria-hidden="true"><span class="octicon octicon-link"></span></a>MUSHRA</h3>
+<h2>
+<a id="mushra" class="anchor" href="#mushra" aria-hidden="true"><span class="octicon octicon-link"></span></a>MUSHRA</h2>
 
 <p>In a MUSHRA test (ITU-R BS.1116-1) the listener gets presented an item marked as reference together with several anonymous test items. By using a slider for each test item he has to rate how close the items are to the reference on top. Among the test items there is usually also one hidden reference and one, or several, anchor signals to prove the validity of the ratings and the qualification of the participants.</p>
 
 <p>Contrary to ABX tests the MUSHRA procedure allows more detailed evaluations as it is possible to compare more than one algorithm to a reference. Furthermore, the results are on a continuous scale allowing a direct numerical comparison of all algorithms under test.</p>
 
-<pre><code>...                                      // &lt;=  General options
-"RateMinValue": 0,                       // &lt;=  Minimum rating
-"RateMaxValue": 100,                     // &lt;=  Maximum rating
-"RateDefaultValue":0,                    // &lt;=  Default rating
-"Testsets": [
-    { "Name": "Schubert 1",              // &lt;=  Name of the test set
-      "TestID": "id1_1",                 // &lt;=  Unique test set ID, necessary for internal referencing
-      "Files": {                         // &lt;=  Array with test files
-        "Reference": "audio/ref.wav",    // &lt;=  Every MUSHRA test set needs exactly one(!) file with a "Reference" label
-        "label_1": "audio/algo_1.wav",   // &lt;=  Various files to be tested, the labels can be freely chosen as desired
-        "label_2": "audio/algo_2.wav",   //      but have to be unique inside a test set
-        "label_3": "audio/algo_3.wav",   //      ...
-        "anchor": "audio/algo_anch.wav", //      ...
-        }
-    },
-    { ... },                             // &lt;=  Next test set starts here
-    ....
-]
-</code></pre>
+<div class="highlight highlight-javascript"><pre>...                                   <span class="pl-c">// &lt;=  General options</span>
+<span class="pl-s"><span class="pl-pds">"</span>RateMinValue<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">0</span>,                    <span class="pl-c">// &lt;=  Minimum rating</span>
+<span class="pl-s"><span class="pl-pds">"</span>RateMaxValue<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">100</span>,                  <span class="pl-c">// &lt;=  Maximum rating</span>
+<span class="pl-s"><span class="pl-pds">"</span>RateDefaultValue<span class="pl-pds">"</span></span><span class="pl-k">:</span><span class="pl-c1">0</span>,                 <span class="pl-c">// &lt;=  Default rating</span>
+<span class="pl-s"><span class="pl-pds">"</span>Testsets<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+  { <span class="pl-s"><span class="pl-pds">"</span>Name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Schubert 1<span class="pl-pds">"</span></span>,             <span class="pl-c">// &lt;=  Name of the test set</span>
+    <span class="pl-s"><span class="pl-pds">"</span>TestID<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>id1_1<span class="pl-pds">"</span></span>,                <span class="pl-c">// &lt;=  Unique test set ID, necessary for </span>
+                                      <span class="pl-c">//     internal referencing</span>
+    <span class="pl-s"><span class="pl-pds">"</span>Files<span class="pl-pds">"</span></span><span class="pl-k">:</span> {                        <span class="pl-c">// &lt;=  Array with test files</span>
+      <span class="pl-s"><span class="pl-pds">"</span>Reference<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/ref.wav<span class="pl-pds">"</span></span>,   <span class="pl-c">// &lt;=  Every MUSHRA test set needs exactly </span>
+                                      <span class="pl-c">//     one(!) file with a "Reference" label</span>
+      <span class="pl-s"><span class="pl-pds">"</span>label_1<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/algo_1.wav<span class="pl-pds">"</span></span>,  <span class="pl-c">// &lt;=  Various files to be tested, the labels </span>
+      <span class="pl-s"><span class="pl-pds">"</span>label_2<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/algo_2.wav<span class="pl-pds">"</span></span>,  <span class="pl-c">//     can be freely chosen as desired but</span>
+      <span class="pl-s"><span class="pl-pds">"</span>label_3<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/algo_3.wav<span class="pl-pds">"</span></span>,  <span class="pl-c">//     have to be unique inside a test set</span>
+      <span class="pl-s"><span class="pl-pds">"</span>anchor<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>audio/algo_anc.wav<span class="pl-pds">"</span></span>, <span class="pl-c">//      ...</span>
+      }
+  },
+  { ... },                            <span class="pl-c">// &lt;=  Next test set starts here</span>
+  ....
+]</pre></div>
 
-<hr>
-
-<h2>
-<a id="browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser Support</h2>
+<h1>
+<a id="browser-support" class="anchor" href="#browser-support" aria-hidden="true"><span class="octicon octicon-link"></span></a>Browser Support</h1>
 
 <p>BeaqleJS in general will run well in any recent web browser out in the wild. The only noteworthy exceptions are the Internet Explorer versions below 9 which still have a market share of a few percent and unfortunately miss the required FileAPI. Participants will get a warning if they open the listening test with one of these old versions.</p>
 
-<h3>
-<a id="required-html5-features" class="anchor" href="#required-html5-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Required HTML5 Features</h3>
+<h2>
+<a id="required-html5-features" class="anchor" href="#required-html5-features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Required HTML5 Features</h2>
 
 <ul>
 <li><p>Audio playback using HTML5 is widely supported by all major browsers since many years (except IE below version 9.0). (<a href="http://caniuse.com/#feat=audio">list browsers</a>)</p></li>
@@ -207,8 +203,8 @@
 <li>WebAudioAPI is used in BeaqleJS for smooth fade in/out at start/stop of playback and at the loop borders. It currently only works reliably with browsers based on the Chromium engine, although it is available in every major browser apart from the Internet Explorer. (<a href="http://caniuse.com/#feat=audio-api">list browsers</a>)</li>
 </ul>
 
-<h3>
-<a id="codecs" class="anchor" href="#codecs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Codecs</h3>
+<h2>
+<a id="codecs" class="anchor" href="#codecs" aria-hidden="true"><span class="octicon octicon-link"></span></a>Codecs</h2>
 
 <p>Although most browsers today support the HTML5 <code>&lt;audio&gt;</code> tag, the supported formats and codecs vary a lot. Unfortunately no browser directly supports FLAC or other lossless compression so far. The only lossless, but also uncompressed, format widely accepted is WAV PCM with 16 bit sample precision. Solely the Internet Explorer is not capable to play back this file type.</p>
 
@@ -261,15 +257,13 @@
 
 <p>(* not on Mac OS X)</p>
 
-<hr>
+<h1>
+<a id="online-submission" class="anchor" href="#online-submission" aria-hidden="true"><span class="octicon octicon-link"></span></a>Online Submission</h1>
+
+<p>BeaqleJS can send the test results in JSON format to a web service to collect them in a central place. An examplary server side PHP script which can be used to receive and store the results is included in the <code>web_service/</code> subfolder. It only requires a webspace with PHP version 5.</p>
 
 <h2>
-<a id="online-submission" class="anchor" href="#online-submission" aria-hidden="true"><span class="octicon octicon-link"></span></a>Online Submission</h2>
-
-<p>BeaqleJS can send the test results in JSON format to a web service to collect them in a central place. An example server side PHP script which can be used to receive and store the results is included in the <code>web_service/</code> subfolder. It only requires a webspace with PHP version 5.</p>
-
-<h3>
-<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h3>
+<a id="setup" class="anchor" href="#setup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup</h2>
 
 <ol>
 <li><p>Upload the file <code>web_service/beaqleJS_Service.php</code> to a webserver. Create a folder named <code>results/</code> next to the PHP script and make sure that the webserver has write permissions on it.</p></li>
@@ -277,8 +271,8 @@
 <li><p>Enable online submission in the BeaqleJS config (<code>"EnableOnlineSubmission": true</code>) and set the <code>BeaqleServiceURL</code> to <code>http://yourdomain.com/mysubfolder/beaqleJS_Service.php</code>.</p></li>
 </ol>
 
-<h3>
-<a id="security" class="anchor" href="#security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h3>
+<h2>
+<a id="security" class="anchor" href="#security" aria-hidden="true"><span class="octicon octicon-link"></span></a>Security</h2>
 
 <p>As with every public web service it is important to be aware about security aspects. In the current implementation there is no possibility to authenticate submitters, therefore everyone can potentially submit spoofed results if he is able to do some basic reverse engineering! However, this is also a common risk with every other public and open survey platform.</p>
 
@@ -289,41 +283,107 @@
 <li>File names in the <code>results/</code> folder contain a random string, so it is not possible to access the submitted data without listing the whole directory</li>
 </ul>
 
-<hr>
+<h1>
+<a id="internals" class="anchor" href="#internals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Internals</h1>
+
+<p>The general structure of BeaqleJS can be divided in three blocks (Fig. 1). There is a common HTML5 <code>index.html</code> file to hold the main HTML structure with some basic place holder blocks whose content will be dynamically created by the JavaScript backend. The styling is completely independent and done with the help of cascading style sheets (CSS). Style sheets, config files and all necessary JavaScript libraries are loaded in the header of the <code>index.html</code>. Most of the descriptive text, like introduction and instructions, are placed in hidden blocks inside this file and their visibility is controlled by the scripts. For the user interface and to simplifiy Document Object Model (DOM) manipulations, the well known <a href="https://jquery.com/">jQuery</a> and <a href="http://jqueryui.com/">jQueryUI</a> libraries are used.</p>
+
+<p>The JavaScript backend consists of two main classes. The first one is the <code>AudioPool</code> which takes care of audio playback and buffering. It pools a set of HTML5 <code>&lt;audio&gt;</code>-tags in a certain AudioPool <code>&lt;div&gt;</code>-tag. There are simple functions to add and load a new file, connect  and address it with an ID, manage playback and looping as well as synchronized pause and stop operations.</p>
+
+<p>The <code>ListeningTest</code> class provides the main functions of an abstract listening test. This includes the setup and management of basic playback controls (play, pause, looping, time line display, ...), reading of the test configuration as well as storage of the results and also main control over the test sequence.</p>
+
+<p>To create a certain test type the abstract <code>ListeningTest</code> class is inherited and specific functions for the actual arrangement of test items or storage and evaluation of the results need to be implemented. Based on this modular approach it is very easy to extend the framework  with additional test types or to create variants of existing ones without the need to reimplement all the necessary basics.</p>
+
+<p>If the test is performed distributed over the internet or on several local computers, the <code>ListeningTest</code> main class is also able to send the final ratings to a web service for centralised collection and evaluation.</p>
 
 <h2>
-<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h2>
+<a id="creating-a-new-test-class" class="anchor" href="#creating-a-new-test-class" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a new test class</h2>
+
+<p>A new test class has to inherit the base functionality from the main <code>ListeningTest</code> class. Inheritance in JavaScript is achieved by prototypes and this means to define a new class <code>MyTest</code> and then set its prototype to the base class. As this overwrites the constructor it has to be reset to the child constructor afterwards: </p>
+
+<div class="highlight highlight-javascript"><pre><span class="pl-c">// inherit from ListeningTest</span>
+<span class="pl-k">function</span> <span class="pl-en">MyTest</span>(<span class="pl-smi">TestData</span>) {
+  ListeningTest.<span class="pl-c1">apply</span>(<span class="pl-v">this</span>, arguments);
+}
+<span class="pl-c1">MyTest</span>.<span class="pl-c1">prototype</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-en">ListeningTest</span>();
+<span class="pl-c1">MyTest</span>.<span class="pl-c1">prototype</span>.<span class="pl-en">constructor</span> <span class="pl-k">=</span> MyTest;
+
+<span class="pl-c">// implement the necessary functions</span>
+<span class="pl-c1">MyTest</span>.<span class="pl-c1">prototype</span>.<span class="pl-en">createTestDOM</span> <span class="pl-k">=</span> ...
+<span class="pl-c1">MyTest</span>.<span class="pl-c1">prototype</span>.<span class="pl-en">saveRatings</span>   <span class="pl-k">=</span> ...
+<span class="pl-c1">MyTest</span>.<span class="pl-c1">prototype</span>.<span class="pl-en">readRatings</span>   <span class="pl-k">=</span> ...
+<span class="pl-c1">MyTest</span>.<span class="pl-c1">prototype</span>.<span class="pl-en">formatResults</span> <span class="pl-k">=</span> ...</pre></div>
+
+<p>The child class can access the <code>TestState</code> and the <code>TestConfig</code> structures from the parent:</p>
+
+<div class="highlight highlight-javascript"><pre>ListeningTest.TestState <span class="pl-k">=</span> {
+    <span class="pl-c">// main public members</span>
+    <span class="pl-s"><span class="pl-pds">'</span>CurrentTest<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-k">-</span><span class="pl-c1">1</span>,  
+    <span class="pl-s"><span class="pl-pds">'</span>TestIsRunning<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">'</span>FileMappings<span class="pl-pds">'</span></span><span class="pl-k">:</span> {},
+    <span class="pl-s"><span class="pl-pds">'</span>Ratings<span class="pl-pds">'</span></span><span class="pl-k">:</span> {},
+    <span class="pl-s"><span class="pl-pds">'</span>EvalResults<span class="pl-pds">'</span></span><span class="pl-k">:</span> {},
+    <span class="pl-c">// ...</span>
+    <span class="pl-c">// optionally add own fields</span>
+    <span class="pl-c">// ...</span>
+}
+
+ListeningTest.TestConfig <span class="pl-k">=</span> {
+    <span class="pl-s"><span class="pl-pds">"</span>TestName<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Test<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>LoopByDefault<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>EnableABLoop<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">true</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>EnableOnlineSubmission<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-c1">false</span>,
+    <span class="pl-s"><span class="pl-pds">"</span>BeaqleServiceURL<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>http://...<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>SupervisorContact<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>super@visor.com<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>Testsets<span class="pl-pds">"</span></span><span class="pl-k">:</span> [
+        {
+            <span class="pl-s"><span class="pl-pds">"</span>Name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Testset 1<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>Files<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                <span class="pl-c">// ...</span>
+            }
+        },
+        {
+            <span class="pl-s"><span class="pl-pds">"</span>Name<span class="pl-pds">"</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>Testset 2<span class="pl-pds">"</span></span>,
+            <span class="pl-s"><span class="pl-pds">"</span>Files<span class="pl-pds">"</span></span><span class="pl-k">:</span> {
+                <span class="pl-c">// ...</span>
+            }
+        }
+        ],
+    <span class="pl-c">// ...</span>
+    <span class="pl-c">// further test specific settings</span>
+    <span class="pl-c">// ...</span>
+}</pre></div>
+
+<p>The <code>TestState</code> should be used to store random file mappings, ratings and other status variables, but can also be dynamically expanded with specific fields required by the child class. The <code>TestConfig</code> structure is just a mapping of the BeaqleJS config file into the class namespace. It has to contain at least the fields and structure as given above but it is possible to add additional sections which are required by the child class.</p>
+
+<p>Every new test class has to implement at least four new functions:</p>
+
+<ul>
+<li><p><code>createTestDOM(TestIdx)</code> creates the visible layout and HTML structure of the test with the index <code>TestIdx</code> based on the test configuration. All the necessary information from the config is available inside the object in <code>this.TestConfig.*</code>. Audio files should be appended to the <code>AudioPool</code> with <code>this.addAudio()</code> and can then be connected to play buttons by unique file IDs. Random mapping of filenames to IDs can be stored in the prepared <code>this.TestState.FileMappings[TestIdx]</code> structure.</p></li>
+<li><p><code>saveRatings(TestIdx)</code> is used to obtain the ratings from the sliders or buttons in the DOM and to store them in an arbitrary format in the predefined <code>this.TestState.Ratings[TestIdx].*</code> object.</p></li>
+<li><p><code>readRatings(TestIdx)</code> is intended to read the ratings for \texttt{TestIdx} from <code>this.TestState.Ratings[TestIdx]</code> and to reapply them to the sliders or buttons in the DOM. This is primarily used during switching back and forth in the test sequence.</p></li>
+<li><p><code>formatResults(TestIdx)</code> is automatically called after the final test in the sequence. It is supposed to evaluate and summarize the ratings and to store the final results in <code>this.TestState.EvalResults</code>. It should return a string containing the results formatted in a human readable manner (HTML). This will be presented to the listener after the last test and the <code>EvalResults</code> structure may be send to a web service (see <a href="#online-submission">Online Submission</a>).</p></li>
+</ul>
+
+<h1>
+<a id="contact" class="anchor" href="#contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contact</h1>
 
 <p><a href="http://hsu-ant.github.io/beaqlejs">http://hsu-ant.github.io/beaqlejs</a></p>
 
 <p>skraft (AT) hsu-hh.de</p>
 
-<hr>
-
-<h2>
-<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h1>
 
 <p>The complete sources, html and script files as well as images are released unter the <em>GPLv3 
 license</em>. A copy of the GPL is provided in the <code>LICENSE.txt</code> file.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/HSU-ANT/beaqlejs/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/HSU-ANT/beaqlejs/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/HSU-ANT/beaqlejs"></a> is maintained by <a href="https://github.com/HSU-ANT">HSU-ANT</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+      </section>
     </div>
-
-  
+    <footer>
+      <p>Project maintained by <a href="https://github.com/HSU-ANT">HSU-ANT</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
   </body>
 </html>
