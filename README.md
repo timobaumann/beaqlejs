@@ -82,6 +82,8 @@ var TestConfig = {
                                      //     AB range slider
   "EnableOnlineSubmission": false,   // <=  Enable transmission of JSON encoded 
                                      //     results to a web service
+  "UploadIntermediates": false,      // <=  upload results after every single test or 
+                                     //     only once all tests have been taken
   "BeaqleServiceURL": "",            // <=  URL of the web service
   "SupervisorContact": "",           // <=  Email address of supervisor to contact for 
                                      //     help or for submission of results by email

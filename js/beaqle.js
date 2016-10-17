@@ -343,6 +343,13 @@ function shuffleArray(array) {
     return array;
 }
 
+// create a GUID as per http://guid.us/GUID/JavaScript
+function guid() {
+    function S4() { return (((1+Math.random())*0x10000)|0).toString(16).substring(1); };
+    // then to call it, plus stitch in '4' in the third group
+    return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+}
+ 
 // jQuery UI based alert() dialog replacement
 $.extend({ alert: function (message, title) {
   $("<div></div>").dialog( {
@@ -481,6 +488,10 @@ $.extend({ alert: function (message, title) {
         this.TestState.Runtime[this.TestState.TestSequence[this.TestState.CurrentTest]] += stopTime - this.TestState.startTime;
 
         // go to next test
+        if (this.TestConfig.UploadIntermediates && this.TestConfig.EnableOnlineSubmission) {
+            this.formatResults();
+            this.SubmitTestResults();
+        }
         if (this.TestState.CurrentTest<this.TestState.TestSequence.length-1) {
             this.TestState.CurrentTest = this.TestState.CurrentTest+1;
         	this.runTest(this.TestState.TestSequence[this.TestState.CurrentTest]);
@@ -544,7 +555,8 @@ $.extend({ alert: function (message, title) {
 
     // ###################################################################
     ListeningTest.prototype.startTests = function() {
-        
+        this.TestState.SessionID = guid();
+        this.TestState.SeqNum = 0;
         // init linear test sequence
         this.TestState.TestSequence = Array();
         for (var i = 0; i < this.TestConfig.Testsets.length; i++)
@@ -743,17 +755,24 @@ $.extend({ alert: function (message, title) {
                                 relID)
     }
 
-    // ###################################################################
-    // submit test results to server
-    ListeningTest.prototype.SubmitTestResults = function () {
-
+    ListeningTest.prototype.getUserObj = function () {
         var UserObj = new Object();
         UserObj.UserName = $('#UserName').val();
         UserObj.UserEmail = $('#UserEMail').val();
         UserObj.UserComment = $('#UserComment').val();
+        UserObj.SessionID = this.TestState.SessionID;
+        UserObj.SeqNum = this.TestState.SeqNum;
+        this.TestState.SeqNum++;
+        return UserObj;
+    }
 
-        var EvalResults = this.TestState.EvalResults;        
-        EvalResults.push(UserObj)
+    // ###################################################################
+    // submit test results to server
+    ListeningTest.prototype.SubmitTestResults = function () {
+
+        var UserObj = this.getUserObj();
+        var EvalResults = this.TestState.EvalResults.slice(0);        
+        EvalResults.push(UserObj);
         
         var testHandle = this;
         $.ajax({
@@ -803,16 +822,12 @@ $.extend({ alert: function (message, title) {
     }
 
     // ###################################################################
-    // submit test results to server
+    // download test results to user computer
     ListeningTest.prototype.DownloadTestResults = function () {
 
-        var UserObj = new Object();
-        UserObj.UserName = $('#UserName').val();
-        UserObj.UserEmail = $('#UserEMail').val();
-        UserObj.UserComment = $('#UserComment').val();
-
-        var EvalResults = this.TestState.EvalResults;        
-        EvalResults.push(UserObj)
+        var UserObj = this.getUserObj();
+        var EvalResults = this.TestState.EvalResults.slice(0);        
+        EvalResults.push(UserObj);
 
         saveTextAsFile(JSON.stringify(EvalResults), getDateStamp() + "_" + UserObj.UserName + ".txt");
 
@@ -1052,43 +1067,43 @@ MushraTest.prototype.formatResults = function () {
     var numWrong   = 0;
 
     // evaluate single tests
-    for (var i = 0; i < this.TestConfig.Testsets.length; i++) {  
-        this.TestState.EvalResults[i]           = new Object();
-        this.TestState.EvalResults[i].TestID    = this.TestConfig.Testsets[i].TestID;
+    for (var i = 0; i < this.TestConfig.Testsets.length; i++) {
+        if (this.TestState.FileMappings[i]) {
+            this.TestState.EvalResults[i]           = new Object();
+            this.TestState.EvalResults[i].TestID    = this.TestConfig.Testsets[i].TestID;
+            if (this.TestState.TestSequence.indexOf(i)>=0) {
+                this.TestState.EvalResults[i].Runtime   = this.TestState.Runtime[i];
+                this.TestState.EvalResults[i].rating    = new Object();
+                this.TestState.EvalResults[i].filename  = new Object();
 
-        if (this.TestState.TestSequence.indexOf(i)>=0) {
-            this.TestState.EvalResults[i].Runtime   = this.TestState.Runtime[i];
-            this.TestState.EvalResults[i].rating    = new Object();
-            this.TestState.EvalResults[i].filename  = new Object();
+                resultstring += "<p><b>"+this.TestConfig.Testsets[i].Name + "</b> ("+this.TestConfig.Testsets[i].TestID+"), Runtime:" + this.TestState.Runtime[i]/1000 + "sec </p>\n";
 
-            resultstring += "<p><b>"+this.TestConfig.Testsets[i].Name + "</b> ("+this.TestConfig.Testsets[i].TestID+"), Runtime:" + this.TestState.Runtime[i]/1000 + "sec </p>\n";
+                var tab = document.createElement('table');
+                var row;
+                var cell;
 
-            var tab = document.createElement('table');
-            var row;
-            var cell;
-
-            row  = tab.insertRow(-1);
-            cell = row.insertCell(-1);
-            cell.innerHTML = "Filename";
-            cell = row.insertCell(-1);
-            cell.innerHTML = "Rating";
-
-            var fileArr    = this.TestConfig.Testsets[i].Files;
-            var testResult = this.TestState.EvalResults[i];
-
-
-            $.each(this.TestState.Ratings[i], function(fileID, rating) { 
                 row  = tab.insertRow(-1);
                 cell = row.insertCell(-1);
-                cell.innerHTML = fileArr[fileID];
+                cell.innerHTML = "Filename";
                 cell = row.insertCell(-1);
-                cell.innerHTML = rating;
+                cell.innerHTML = "Rating";
 
-                testResult.rating[fileID]   = rating;
-                testResult.filename[fileID] = fileArr[fileID];
-            });
+                var fileArr    = this.TestConfig.Testsets[i].Files;
+                var testResult = this.TestState.EvalResults[i];
+
+                $.each(this.TestState.Ratings[i], function(fileID, rating) { 
+                    row  = tab.insertRow(-1);
+                    cell = row.insertCell(-1);
+                    cell.innerHTML = fileArr[fileID];
+                    cell = row.insertCell(-1);
+                    cell.innerHTML = rating;
+
+                    testResult.rating[fileID]   = rating;
+                    testResult.filename[fileID] = fileArr[fileID];
+                });
             
-            resultstring += tab.outerHTML + "\n";
+                resultstring += tab.outerHTML + "\n";
+            }
         }
     }
    
@@ -1218,25 +1233,26 @@ AbxTest.prototype.formatResults = function () {
 
     // evaluate single tests
     for (var i = 0; i < this.TestConfig.Testsets.length; i++) {
-        this.TestState.EvalResults[i]        = new Object();
-        this.TestState.EvalResults[i].TestID = this.TestConfig.Testsets[i].TestID;
+        if (this.TestState.FileMappings[i]) {
+            this.TestState.EvalResults[i]        = new Object();
+            this.TestState.EvalResults[i].TestID = this.TestConfig.Testsets[i].TestID;
 
-        if (this.TestState.TestSequence.indexOf(i)>=0) {
-            row  = tab.insertRow(-1);
+            if (this.TestState.TestSequence.indexOf(i)>=0) {
+                row  = tab.insertRow(-1);
 
-            cell = row.insertCell(-1);
-            cell.innerHTML = this.TestConfig.Testsets[i].Name + "("+this.TestConfig.Testsets[i].TestID+")";
-            cell = row.insertCell(-1);
+                cell = row.insertCell(-1);
+                cell.innerHTML = this.TestConfig.Testsets[i].Name + "("+this.TestConfig.Testsets[i].TestID+")";
+                cell = row.insertCell(-1);
 
-
-            if (this.TestState.Ratings[i] === this.TestState.FileMappings[i].X) {
-                this.TestState.EvalResults[i] = true;
-                cell.innerHTML = "correct"; 
-                numCorrect += 1;
-            } else {
-                this.TestState.EvalResults[i] = false;
-                cell.innerHTML = "wrong"; 
-                numWrong += 1;
+                if (this.TestState.Ratings[i] === this.TestState.FileMappings[i].X) {
+                    this.TestState.EvalResults[i] = true;
+                    cell.innerHTML = "correct"; 
+                    numCorrect += 1;
+                } else {
+                    this.TestState.EvalResults[i] = false;
+                    cell.innerHTML = "wrong"; 
+                    numWrong += 1;
+                }
             }
         }
     }
@@ -1323,30 +1339,18 @@ PrefTest.prototype.createTestDOM = function (TestIdx) {
 
         // append the created table to the DOM
         $('#TableContainer').append(tab);	
-
-        // randomly preselect one radio button
-        if (typeof this.TestState.Ratings[TestIdx] == 'undefined') {
-            /*if (Math.random() > 0.5) {
-               $("#selectB").prop("checked", true);
-            } else {
-               $("#selectA").prop("checked", true);
-            }*/
-        }
 }
 
 
 PrefTest.prototype.readRatings = function (TestIdx) {
-
     if (this.TestState.Ratings[TestIdx] === "A") {
         $("#selectA").prop("checked", true);
     } else if (this.TestState.Ratings[TestIdx] === "B") {
         $("#selectB").prop("checked", true);
     }
-
 }
 
 PrefTest.prototype.saveRatings = function (TestIdx) {
-
     if ($("#selectA").prop("checked")) {
         this.TestState.Ratings[TestIdx] = "A";
     } else if ($("#selectB").prop("checked")) {
@@ -1370,21 +1374,23 @@ PrefTest.prototype.formatResults = function () {
 
     // evaluate single tests
     for (var i = 0; i < this.TestConfig.Testsets.length; i++) {
-        this.TestState.EvalResults[i] = new Object();
-        this.TestState.EvalResults[i].TestID = this.TestConfig.Testsets[i].TestID;
-        if (this.TestState.TestSequence.indexOf(i)>=0) {
-            row  = tab.insertRow(-1);
-            cell = row.insertCell(-1);
-            cell.innerHTML = this.TestConfig.Testsets[i].Name + "("+this.TestConfig.Testsets[i].TestID+")";
-            cell = row.insertCell(-1);
-            this.TestState.EvalResults[i].PresentationOrder = "A=" + this.TestState.FileMappings[i].A + ", B=" + this.TestState.FileMappings[i].B;
-            cell.innerHTML = this.TestState.EvalResults[i].PresentationOrder;
-            cell = row.insertCell(-1);
-            this.TestState.EvalResults[i].Runtime   = this.TestState.Runtime[i];
-            cell.innerHTML = this.TestState.EvalResults[i].Runtime; 
-            cell = row.insertCell(-1);
-            this.TestState.EvalResults[i].Preference = this.TestState.Ratings[i];
-            cell.innerHTML = this.TestState.EvalResults[i].Preference;
+        if (this.TestState.FileMappings[i]) {
+            this.TestState.EvalResults[i] = new Object();
+            this.TestState.EvalResults[i].TestID = this.TestConfig.Testsets[i].TestID;
+            if (this.TestState.TestSequence.indexOf(i)>=0) {
+                row  = tab.insertRow(-1);
+                cell = row.insertCell(-1);
+                cell.innerHTML = this.TestConfig.Testsets[i].Name + "("+this.TestConfig.Testsets[i].TestID+")";
+                cell = row.insertCell(-1);
+                this.TestState.EvalResults[i].PresentationOrder = "A=" + this.TestState.FileMappings[i].A + ", B=" + this.TestState.FileMappings[i].B;
+                cell.innerHTML = this.TestState.EvalResults[i].PresentationOrder;
+                cell = row.insertCell(-1);
+                this.TestState.EvalResults[i].Runtime   = this.TestState.Runtime[i];
+                cell.innerHTML = this.TestState.EvalResults[i].Runtime; 
+                cell = row.insertCell(-1);
+                this.TestState.EvalResults[i].Preference = this.TestState.Ratings[i];
+                cell.innerHTML = this.TestState.EvalResults[i].Preference;
+            }
         }
     }
     resultstring += tab.outerHTML;
