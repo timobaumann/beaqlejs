@@ -1319,10 +1319,10 @@ PrefTest.prototype.createTestDOM = function (TestIdx) {
         this.addAudio(TestIdx, fileID, fileID);
 
         cell[2] = row.insertCell(-1);
-        cell[2].innerHTML = "<button class='stopButton'>Stop</button>";
+        cell[2].innerHTML = "<button class='stopButton'><span class='textEN'>Stop</span><span class='textDE'>Stopp</span></button>";
         
         cell[3] = row.insertCell(-1);
-        cell[3].innerHTML = "Press buttons to start/stop playback."; 
+        cell[3].innerHTML = "<span class='textEN'>Press buttons to start/stop playback.</span><span class='textDE'>Benutze die Schaltflächen um A oder B abzuspielen.</span>";
  
         row[1]  = tab.insertRow(-1);
         cell[0] = row[1].insertCell(-1);
@@ -1331,7 +1331,7 @@ PrefTest.prototype.createTestDOM = function (TestIdx) {
         cell[1].innerHTML = "<input type='radio' name='ItemSelection' id='selectB'/>";  
         cell[2] = row[1].insertCell(-1);
         cell[3] = row[1].insertCell(-1);
-        cell[3].innerHTML = "Please select the item which you prefer!";
+        cell[3].innerHTML = "<span class='textEN'>Please select the item which you prefer!</span><span class='textDE'>Bitte wähle den besseren Stimulus.</span>";
        
         // add spacing
         row = tab.insertRow(-1);
