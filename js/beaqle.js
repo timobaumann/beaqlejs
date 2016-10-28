@@ -759,6 +759,9 @@ $.extend({ alert: function (message, title) {
         var UserObj = new Object();
         UserObj.UserName = $('#UserName').val();
         UserObj.UserEmail = $('#UserEMail').val();
+        UserObj.UserAge = $('input[name=UserAge]').val();
+        UserObj.UserGender = $('input[name=UserGender]').val();
+        UserObj.UserDialect = $('#UserDialect').val();
         UserObj.UserComment = $('#UserComment').val();
         UserObj.SessionID = this.TestState.SessionID;
         UserObj.SeqNum = this.TestState.SeqNum;

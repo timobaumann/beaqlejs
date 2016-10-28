@@ -108,25 +108,25 @@ Wir freuen uns sehr, wenn Du später weitere Bewertungen vornimmst.
             <ul>
                 <li><span class="textEN">Entering a name or pseudonym allows us to match your ratings if you choose to return to this page in the future.</span><span class="textDE">Dein Name oder ein Pseudonym erlaubt uns, alle Deine Bewertungen zusammenzufassen falls Du später weitere Bewertungen abgibst.</span></li>
 		<li><span class="textEN">An email address is not mandatory but it would help us to contact you if we have further questions and to inform you of the results of our research.</span><span class="textDE">Deine E-Mail-Adresse ist nicht notwendig aber erlaubt es uns, Dich für Nachfragen zu kontaktieren und Dir die Ergebnisse unserer Forschung mitzuteilen.</span></li>
-	    </ul>
+	    </ul><form id="metadata">
             <table border=0 style="margin-left: auto;margin-right: auto;">
             <tr><td align="right"><label for="UserName">Name/Pseudonym:</label></td><td>
 <input id="UserName" type="text" size="40" maxlength="40" /></td></tr>
             <tr><td align="right"><label for="UserEMail">E-Mail:</label></td><td>
 <input id="UserEMail" type="text" size="40" maxlength="40" /></td></tr>
-            <tr><td align="right"><label for="age">Alter (in Jahren):</label></td><td>
-<input type="radio" id="young" name="age" value="-20" /><label for="young">bis 20 </label>
-<input type="radio" id="stud" name="age" value="20-30" /><label for="stud">20-30 </label>
-<input type="radio" id="mid" name="age" value="30-40" /><label for="mid">30-40 </label>
-<input type="radio" id="upper" name="age" value="40-60" /><label for="upper">40-60 </label>
-<input type="radio" id="old" name="age" value="60+" /><label for="old">über 60 </label>
+            <tr><td align="right"><label for="UserAge">Alter (in Jahren):</label></td><td>
+<input type="radio" id="young" name="UserAge" value="<20" /><label for="young">bis 20 </label>
+<input type="radio" id="stud" name="UserAge" value="20-30" /><label for="stud">20-30 </label>
+<input type="radio" id="mid" name="UserAge" value="30-40" /><label for="mid">30-40 </label>
+<input type="radio" id="upper" name="UserAge" value="40-60" /><label for="upper">40-60 </label>
+<input type="radio" id="old" name="UserAge" value=">60" /><label for="old">über 60 </label>
 </td></tr>
-            <tr><td align="right"><label for="gender">Geschlecht:</label></td><td>
-<input type="radio" id="fem" name="gender" value="fem" /><label for="fem">weiblich </label>
-<input type="radio" id="masc" name="gender" value="masc" /><label for="masc">männlich </label>
+            <tr><td align="right"><label for="UserGender">Geschlecht:</label></td><td>
+<input type="radio" id="fem" name="UserGender" value="fem" /><label for="fem">weiblich </label>
+<input type="radio" id="masc" name="UserGender" value="masc" /><label for="masc">männlich </label>
 </td></tr>
-<tr><td align="right"><label for="dialect">Dialektale Herkunft:</label></td><td>
-<select name="dialect">
+<tr><td align="right"><label for="UserDialect">Dialektale Herkunft:</label></td><td>
+<select id="UserDialect" name="UserDialect">
 <option>unsicher/sonstiges</option>
 <option>Norddeutschland</option>
 <option>Nordrhein-Westfalen</option>
@@ -139,7 +139,7 @@ Wir freuen uns sehr, wenn Du später weitere Bewertungen vornimmst.
 <option>Schweiz</option>
 </select>
 </td></tr>
-            </table>
+            </table></form>
 </div>
         </div>
         <br />
