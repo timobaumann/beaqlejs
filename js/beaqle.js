@@ -16,6 +16,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>
 */
 
+/*
+TODO: store presentation order in EvalResults
+TODO: add per-result comment-field
+*/
+
 // Enable JavaScript strict mode
 "use strict";
 
@@ -350,6 +355,21 @@ function guid() {
     return (S4() + S4() + "-" + S4() + "-4" + S4().substr(0,3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
 }
  
+// retrieve GUID from cookie if there is one, otherwise create one and set the cookie
+function getGUID() {	
+    var myGuid = guid();
+    if (document.cookie) {
+        // TODO: read from cookie
+        var re = new RegExp('id=(.*)');
+        if (re.test(document.cookie)) {
+            myGuid = re.exec(document.cookie)[1];
+        }
+    } else {
+        document.cookie = "id="+myGuid+"; expires=Tue, 19 Jan 2038 03:14:07 UTC;";
+    }/**/
+    return myGuid;
+}
+
 // jQuery UI based alert() dialog replacement
 $.extend({ alert: function (message, title) {
   $("<div></div>").dialog( {
@@ -555,7 +575,7 @@ $.extend({ alert: function (message, title) {
 
     // ###################################################################
     ListeningTest.prototype.startTests = function() {
-        this.TestState.SessionID = guid();
+        this.TestState.SessionID = getGUID();
         this.TestState.SeqNum = 0;
         // init linear test sequence
         this.TestState.TestSequence = Array();
@@ -596,7 +616,7 @@ $.extend({ alert: function (message, title) {
         this.createTestDOM(TestIdx);
 
         // set current test name
-        $('#TestHeading').html(this.TestConfig.Testsets[TestIdx].Name + " (" + (this.TestState.CurrentTest+1) + " of " + this.TestState.TestSequence.length + ")");
+        $('#TestHeading').html(this.TestConfig.Testsets[TestIdx].Name + " (" + (this.TestState.CurrentTest+1) + " of " + this.TestState.TestSequence.length + ")<sup>*</sup>");
         $('#TestHeading').show();
 
         // hide everything instead of load animation
@@ -759,10 +779,11 @@ $.extend({ alert: function (message, title) {
         var UserObj = new Object();
         UserObj.UserName = $('#UserName').val();
         UserObj.UserEmail = $('#UserEMail').val();
-        UserObj.UserAge = $('input[name=UserAge]').val();
-        UserObj.UserGender = $('input[name=UserGender]').val();
+        UserObj.UserAge = $('input:radio[name=UserAge]:checked').val();
+        UserObj.UserGender = $('input:radio[name=UserGender]:checked').val();
         UserObj.UserDialect = $('#UserDialect').val();
         UserObj.UserComment = $('#UserComment').val();
+        UserObj.UserAgent = navigator.userAgent; // helpful for debugging
         UserObj.SessionID = this.TestState.SessionID;
         UserObj.SeqNum = this.TestState.SeqNum;
         this.TestState.SeqNum++;
